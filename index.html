@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Diário de Estudos · Transpetro Inspeção</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EAF1EE;--cd:#fff;--ink:#12302B;--mu:#587770;--ln:#D3E0DB;--a:#1F7A5C;--w:#C98A10;--r:#C8452E;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0D1A17;--cd:#15261F;--ink:#E3F0EC;--mu:#8FB0A7;--ln:#26403A;--a:#3FBF92;--w:#E3A72F;--r:#F0765F;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#0D1A17;--cd:#15261F;--ink:#E3F0EC;--mu:#8FB0A7;--ln:#26403A;--a:#3FBF92;--w:#E3A72F;--r:#F0765F;color-scheme:dark}
+*{box-sizing:inherit}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Figtree,system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--ln);padding:10px 16px 0}
+h1{font-size:19px;margin:0 0 6px;font-weight:800}h2{font-size:16px;margin:0 0 10px}
+nav{display:flex;gap:2px;overflow-x:auto}
+nav button{background:none;border:0;border-bottom:3px solid transparent;color:var(--mu);font:600 14px Figtree,sans-serif;padding:8px 12px;cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--ink);border-color:var(--a)}
+main{max-width:980px;margin:0 auto;padding:16px}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:14px;margin-bottom:14px}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-bottom:14px}
+.k b{display:block;font-size:26px;font-weight:800;line-height:1.1}.k small,small{color:var(--mu)}
+.k{background:var(--cd);border:1px solid var(--ln);border-radius:10px;padding:12px}
+button,input,select,textarea{font:inherit;color:var(--ink)}
+.pri,.sec{border-radius:8px;padding:8px 14px;border:1px solid var(--a);cursor:pointer;font-weight:600}
+.pri{background:var(--a);color:#fff}.sec{background:none}
+input:not([type=checkbox]),select,textarea{background:var(--bg);border:1px solid var(--ln);border-radius:8px;padding:7px 9px;max-width:100%}
+:focus-visible{outline:2px solid var(--a);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{border:1px solid var(--ln);background:var(--cd);border-radius:99px;padding:4px 12px;cursor:pointer;font-size:13px}.chip.on{background:var(--a);color:#fff;border-color:var(--a)}
+.row{display:grid;grid-template-columns:auto 1fr minmax(190px,300px);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln)}
+.ck{display:flex;flex-direction:column;align-items:center;font-size:11px;color:var(--mu)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+.bar{height:10px;background:var(--ln);border-radius:5px;position:relative;overflow:hidden}.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
+.dr{display:grid;grid-template-columns:150px 1fr 170px;gap:10px;align-items:center;margin:9px 0;font-size:14px}
+.hm{display:grid;grid-template-rows:repeat(7,14px);grid-auto-flow:column;grid-auto-columns:14px;gap:3px;overflow-x:auto}.hm i{border-radius:3px}
+svg text{fill:var(--mu);font-size:11px}
+.pm{text-align:center}.pm .t{font-size:54px;font-weight:800;fill:var(--ink)}
+.gr{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.gr button{padding:10px 4px;border-radius:8px;border:1px solid var(--ln);background:var(--bg);cursor:pointer}
+.gr b{display:block}table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:6px 4px;border-bottom:1px solid var(--ln);text-align:left}
+.f{display:flex;flex-wrap:wrap;gap:8px;align-items:end}.f label{display:flex;flex-direction:column;font-size:12px;color:var(--mu)}
+@media(max-width:560px){.dr{grid-template-columns:1fr 70px}.dr .bar{grid-column:1/3;order:3}.row{grid-template-columns:auto 1fr}.row .ob{grid-column:1/3}}
+.ob{display:flex;gap:4px;flex-wrap:wrap}.ob input{width:64px}.ob .o{width:100%}.n{width:72px}
+</style></head><body>
+<header><h1>Diário de Estudos · Transpetro Inspeção</h1><nav id="nv"></nav></header>
+<main id="app"></main>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script><script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const D=[["Específicas",40],["Português",10],["Matemática",10]],DC=['#1F7A5C','#3B6FB6','#C98A10'];
+const T=[[0,"Desenho técnico",1,"Desenho, metrologia e medição"],[0,"Metrologia",1,"Desenho, metrologia e medição"],[0,"Sistema Internacional de Unidades",1,"Desenho, metrologia e medição"],[0,"Conversão de unidades",1,"Desenho, metrologia e medição"],[0,"Medição de temperatura e suas escalas",2,"Desenho, metrologia e medição"],[0,"Instrumentos de medição e aferição de grandezas",2,"Desenho, metrologia e medição"],[0,"Mecânica Geral: estática, cinemática e dinâmica",2,"Mecânica e resistência dos materiais"],[0,"Mecânica dos Fluidos: propriedades dos fluidos e hidrostática",3,"Mecânica e resistência dos materiais"],[0,"Calorimetria",4,"Térmica"],[0,"Transferência de calor: condução, convecção e radiação",4,"Térmica"],[0,"Resistência dos Materiais: tensões normais e cisalhantes, solicitações axiais, flexão, torção e dilatação térmica dos sólidos",3,"Mecânica e resistência dos materiais"],[0,"Soldagem: eletrodo revestido e TIG",7,"Soldagem, usinagem e ensaios"],[0,"Mudanças de estado",4,"Térmica"],[0,"Processos de fabricação mecânica: usinagem",6,"Soldagem, usinagem e ensaios"],[0,"Conceitos básicos de eletricidade",8,"Eletricidade e ondas"],[0,"Ondas mecânicas e eletromagnéticas",8,"Eletricidade e ondas"],[0,"Seleção de materiais de construção mecânica",5,"Materiais e metalurgia"],[0,"Aços e ferros fundidos",5,"Materiais e metalurgia"],[0,"Diagrama de equilíbrio ferro-carbono",5,"Materiais e metalurgia"],[0,"Materiais não ferrosos",5,"Materiais e metalurgia"],[0,"Mudanças de estado (repetido no edital, item 21)",4,"Térmica"],[0,"Tratamentos térmicos",6,"Materiais e metalurgia"],[0,"Ensaios mecânicos destrutivos e não destrutivos",7,"Soldagem, usinagem e ensaios"],[0,"Alto-forno, aciaria e conversores/convertedores",6,"Materiais e metalurgia"],[0,"Fundição e conformação",6,"Materiais e metalurgia"],[0,"Eletroquímica",8,"Química"],[0,"Funções químicas",3,"Química"],[0,"Reações de óxido-redução",8,"Química"],[0,"Estequiometria",3,"Química"],[0,"Hidrocarbonetos e polímeros",8,"Química"],[1,"Compreensão de textos de gêneros variados",1,"Língua Portuguesa"],[1,"Ortografia oficial",5,"Língua Portuguesa"],[1,"Mecanismos de coesão textual",4,"Língua Portuguesa"],[1,"Emprego das classes de palavras",1,"Língua Portuguesa"],[1,"Concordância nominal e verbal",2,"Língua Portuguesa"],[1,"Emprego do sinal indicativo de crase",3,"Língua Portuguesa"],[1,"Sinais de pontuação",3,"Língua Portuguesa"],[1,"Significação das palavras",4,"Língua Portuguesa"],[2,"Conjuntos numéricos: naturais, inteiros, racionais e reais; ordem, operações e propriedades",1,"Matemática"],[2,"Razão e proporção: regra de três simples e composta; porcentagem",1,"Matemática"],[2,"Relações e funções: polinomiais, exponenciais, logarítmicas e trigonométricas",3,"Matemática"],[2,"Equações: 1º grau, 2º grau, exponenciais, logarítmicas e sistemas lineares",2,"Matemática"],[2,"Análise combinatória: contagem, permutação, arranjo e combinação",5,"Matemática"],[2,"Probabilidade básica: espaços equiprováveis",5,"Matemática"],[2,"Estatística básica: tabelas e gráficos, média, mediana, moda, amplitude, variância e desvio padrão",6,"Matemática"],[2,"Matemática financeira: juros simples e compostos",7,"Matemática"],[2,"Geometria plana: relações métricas no triângulo retângulo; perímetros e áreas",4,"Matemática"],[2,"Geometria espacial: áreas e volumes",8,"Matemática"]];
+/* ===== FIREBASE: cole aqui a config do seu projeto (Console > Configurações do projeto > Seus apps > Web) ===== */
+const FB_CONFIG={apiKey:"AIzaSyDgw22gSqDNLDYyXebYOdiD9195P-Zv7Ic",authDomain:"agente-de-endemias.firebaseapp.com",projectId:"agente-de-endemias",storageBucket:"agente-de-endemias.firebasestorage.app",messagingSenderId:"292383053611",appId:"1:292383053611:web:cd707dad983e30236e976e"};
+let fa,fdb,fu=null,ft;
+function cloud(){if(!fu)return;clearTimeout(ft);ft=setTimeout(()=>fdb.doc('transpetro/'+fu.uid).set({j:JSON.stringify(S)}).catch(e=>console.warn(e.message)),1500)}
+try{if(FB_CONFIG.apiKey.indexOf('COLE')<0){firebase.initializeApp(FB_CONFIG);fa=firebase.auth();fdb=firebase.firestore();
+ fa.onAuthStateChanged(async u=>{fu=u;if(u){try{const r=await fdb.doc('transpetro/'+u.uid).get(),c=r.exists&&r.data().j?JSON.parse(r.data().j):null;
+  if(c&&(c.u||0)>(S.u||0)){S=c;nz();lsave()}else cloud()}catch(e){console.warn(e.message)}}draw()})}}catch(e){console.warn(e)}
+const TABS=[['dash','Dashboard'],['top','Tópicos'],['pom','Pomodoro'],['pl','Plano'],['rev','Revisões'],['sim','Simulados'],['hor','Horas'],['cfg','Ajustes']];
+const $=s=>document.querySelector(s),K='transpetro-insp-v1',BASE=document.title;
+let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
+function nz(){S.t=S.t||{};S.l=S.l||[];S.w=S.w||{};S.s=S.s||{};S.rq=S.rq||{};S.c=Object.assign({f:25,s:5,g:15,n:4,r:.9,w:18,x:'2026-12-06',m:120},S.c)}
+S=S||{};nz();
+const lsave=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}},save=()=>{S.u=Date.now();lsave();cloud()};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';');
+const iso=d=>{d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const today=()=>iso(),add=(d,n)=>{const x=new Date(d+'T12:00');x.setDate(x.getDate()+n);return iso(x)};
+const dbt=(a,b)=>Math.round((new Date(b+'T12:00')-new Date(a+'T12:00'))/864e5);
+const fm=m=>{m=Math.round(m);return m>=60?Math.floor(m/60)+'h'+String(m%60).padStart(2,'0'):m+'min'};
+const br=d=>d.slice(8)+'/'+d.slice(5,7);
+const sum=f=>S.l.filter(f).reduce((a,x)=>a+x.m,0);
+/* FSRS-5 (parâmetros padrão) */
+const W=[0.40255,1.18385,3.173,15.69105,7.1949,0.5345,1.4604,0.0046,1.54575,0.1192,1.01925,1.9395,0.11,0.29605,2.2698,0.2315,2.9898,0.51655,0.6621];
+const cl=(x,a,b)=>Math.min(b,Math.max(a,x)),d0=g=>W[4]-Math.exp(W[5]*(g-1))+1,ret=(t,s)=>Math.pow(1+19/81*t/s,-.5),ivl=(s,r)=>Math.max(1,Math.round(s/(19/81)*(Math.pow(r,-2)-1)));
+function rate(c,g,t0){let n;
+ if(!c||!c.s)n={s:W[g-1],d:cl(d0(g),1,10),n:1,l:g==1?1:0};
+ else{const R=ret(Math.max(0,dbt(c.last,t0)),c.s);let d=c.d-W[6]*(g-3)*(10-c.d)/9;d=cl(W[7]*d0(4)+(1-W[7])*d,1,10);let s;
+  if(g==1)s=Math.min(c.s,W[11]*Math.pow(c.d,-W[12])*(Math.pow(c.s+1,W[13])-1)*Math.exp((1-R)*W[14]));
+  else s=c.s*(1+Math.exp(W[8])*(11-c.d)*Math.pow(c.s,-W[9])*(Math.exp((1-R)*W[10])-1)*(g==2?W[15]:1)*(g==4?W[16]:1));
+  n={s:Math.max(.1,s),d,n:c.n+1,l:c.l+(g==1?1:0)}}
+ n.last=t0;n.due=add(t0,g==1?1:ivl(n.s,S.c.r));return n}
+let tab='dash',flt=-1,q='',rv=0,P={m:'f',left:S.c.f*60,run:0,end:0,cy:0,sel:'d0'};
+const sel=(v,id)=>`<select ${id?'id='+id:''} onchange="${id=='ls'?'':'P.sel=this.value'}">${D.map((d,k)=>`<optgroup label="${d[0]}"><option value="d${k}" ${v=='d'+k?'selected':''}>Geral — ${d[0]}</option>${T.map((t,i)=>t[0]==k?`<option value="t${i}" ${v=='t'+i?'selected':''}>${esc(t[1].slice(0,70))}</option>`:'').join('')}</optgroup>`).join('')}</select>`;
+const pick=v=>v[0]=='d'?{c:+v.slice(1),t:-1}:{c:T[v.slice(1)][0],t:+v.slice(1)};
+const V={};
+V.dash=()=>{const t0=today(),n=T.length,tot=sum(()=>1),td=sum(x=>x.d==t0),wd=(new Date().getDay()+6)%7,ws=add(t0,-wd),wk=sum(x=>x.d>=ws);
+ let st=0,d=td?t0:add(t0,-1);while(S.l.some(x=>x.d==d)){st++;d=add(d,-1)}
+ const ds=D.map((D_,k)=>{const ids=T.map((t,i)=>i).filter(i=>T[i][0]==k);return{k,n:ids.length,e:ids.filter(i=>S.t[i]&&S.t[i].e).length,r:ids.filter(i=>S.t[i]&&S.t[i].r).length,m:sum(x=>x.c==k),q:ids.reduce((a,i)=>a+(S.t[i]&&S.t[i].q||0),0),h:ids.reduce((a,i)=>a+(S.t[i]&&S.t[i].a||0),0)}});
+ const E=ds.reduce((a,x)=>a+x.e,0),R=ds.reduce((a,x)=>a+x.r,0),cov=ds.reduce((a,x)=>a+D[x.k][1]/60*(.6*x.e+.4*x.r)/x.n,0)*100;
+ const cw_=cw(),pl=T.filter(t=>t[2]<=cw_).length,pd=T.filter((t,i)=>t[2]<=cw_&&S.t[i]&&S.t[i].e).length,due=Object.values(S.t).filter(s=>s.c&&s.c.due<=t0).length,dl=S.c.x?dbt(t0,S.c.x):null;
+ const days=[...Array(14)].map((_,i)=>add(t0,i-13)),v=days.map(d=>sum(x=>x.d==d)/60),mx=Math.max(...v,S.c.w/7,.5),gy=120-S.c.w/7/mx*105;
+ const hs=add(t0,-wd-77);
+ return`<div class=g>
+ <div class=k><b>${fm(tot)}</b><small>total estudado</small></div>
+ <div class=k><b>${fm(td)}</b><small>hoje</small></div>
+ <div class=k><b>${fm(wk)} <small>/ ${S.c.w}h</small></b><small>esta semana</small></div>
+ <div class=k><b>${st} ${st==1?'dia':'dias'}</b><small>de sequência</small></div>
+ <div class=k><b>${due}</b><small>revisões pendentes</small></div>
+ <div class=k><b>${pd}/${pl}</b><small>tópicos concluídos / previstos (semana ${cw_})</small></div>
+ <div class=k><b>${dl==null?'—':dl<0?'passou':dl+' d'}</b><small>${dl>0?`até a prova · ${((n-E)/dl).toFixed(1)} tópicos/dia`:'defina a data em Ajustes'}</small></div></div>
+ <div class=card><h2>Cobertura do edital: ${cov.toFixed(0)}% <small>(ponderada pelo nº de questões)</small></h2>
+ ${ds.map(x=>`<div class=dr><span><i class=dot style="background:${DC[x.k]}"></i>${D[x.k][0]} <small>${D[x.k][1]}q</small></span><div class=bar title="Estudado ${x.e}/${x.n} · Revisado ${x.r}/${x.n}"><i style="width:${x.e/x.n*100}%;background:${DC[x.k]};opacity:.4"></i><i style="width:${x.r/x.n*100}%;background:${DC[x.k]};height:5px;top:2.5px"></i></div><small>${x.e}/${x.n} · ${fm(x.m)} · ${x.q?Math.round(x.h/x.q*100)+'% acerto':'sem questões'}</small></div>`).join('')}
+ <small>Barra clara = estudado; barra fina = revisado. Total: ${E}/${n} estudados, ${R}/${n} revisados.</small></div>
+ <div class=card><h2>Horas nos últimos 14 dias</h2><svg viewBox="0 0 560 150" width=100% role=img aria-label="Horas por dia">
+ <line x1=0 x2=560 y1=${gy} y2=${gy} stroke="var(--w)" stroke-dasharray="4 4"/><text x=560 y=${gy-3} text-anchor=end>meta diária</text>
+ ${v.map((h,i)=>`<rect x=${i*40+6} y=${120-h/mx*105} width=28 height=${h/mx*105} rx=4 fill="var(--a)"><title>${br(days[i])}: ${fm(h*60)}</title></rect><text x=${i*40+20} y=138 text-anchor=middle>${days[i].slice(8)}</text>`).join('')}</svg></div>
+ ${simCard()}<div class=card><h2>Constância (12 semanas)</h2><div class=hm>${[...Array(84)].map((_,i)=>{const d=add(hs,i),m=sum(x=>x.d==d);return`<i title="${br(d)}: ${fm(m)}" style="background:${d>t0?'transparent':m?'var(--a)':'var(--ln)'};opacity:${m?Math.min(1,.3+m/150):1}"></i>`}).join('')}</div></div>
+ <div class=card><h2>Horas por disciplina</h2>${ds.map(x=>`<div class=dr><span><i class=dot style="background:${DC[x.k]}"></i>${D[x.k][0]}</span><div class=bar><i style="width:${tot?x.m/tot*100:0}%;background:${DC[x.k]}"></i></div><small>${fm(x.m)}</small></div>`).join('')}</div>`};
+const rows=()=>{const m={};S.l.forEach(x=>{if(x.t>=0)m[x.t]=(m[x.t]||0)+x.m});
+ return T.map((t,i)=>[t,i]).filter(([t,i])=>(flt==-2?t[2]==cw():flt<0||t[0]==flt)&&t[1].toLowerCase().includes(q)).map(([t,i])=>{const s=S.t[i]||{};
+ return`<div class=row><div style="display:flex;gap:10px"><label class=ck>Concl.<input type=checkbox ${s.e?'checked':''} onchange="tg(${i},'e',this.checked)"></label><label class=ck>2ª rev.<input type=checkbox ${s.r?'checked':''} onchange="tg(${i},'r',this.checked)"></label></div>
+ <div><i class=dot style="background:${DC[t[0]]}"></i>${esc(t[1])}<br><small>${t[3]} · sem. ${t[2]}${m[i]?' · '+fm(m[i]):''}${s.c?' · próxima revisão '+br(s.c.due):''}</small></div>
+ <div class=ob><input type=number min=0 placeholder="Quest." value="${s.q||''}" onchange="tg(${i},'q',+this.value)"><input type=number min=0 placeholder="Acert." value="${s.a||''}" onchange="tg(${i},'a',+this.value)"><input class=o placeholder="Obs." value="${esc(s.o||'')}" onchange="tg(${i},'o',this.value)"></div></div>`}).join('')||'<p>Nenhum tópico encontrado.</p>'};
+V.top=()=>`<div class=chips>${[-1,-2,0,1,2].map(i=>`<button class="chip ${flt==i?'on':''}" onclick="flt=${i};draw()">${i==-1?'Todas':i==-2?'Semana atual':D[i][0]}</button>`).join('')}</div>
+ <p><input type=search placeholder="Buscar tópico" value="${esc(q)}" oninput="q=this.value.toLowerCase();$('#tl').innerHTML=rows()" style="width:100%"></p><div class=card id=tl>${rows()}</div>
+ <small>Ao marcar “Estudado”, o tópico entra na fila de revisões espaçadas.</small>`;
+function tg(i,k,v){const s=S.t[i]=S.t[i]||{};s[k]=v;if(k=='e'){if(v&&!s.c)s.c={due:today()};if(!v)delete s.c}save();if('er'.includes(k))$('#tl').innerHTML=rows()}
+V.rev=()=>{const t0=today(),all=Object.entries(S.t).filter(([i,s])=>s.c),due=all.filter(([i,s])=>s.c.due<=t0).sort((a,b)=>a[1].c.due.localeCompare(b[1].c.due)),up=all.filter(([i,s])=>s.c.due>t0).sort((a,b)=>a[1].c.due.localeCompare(b[1].c.due));
+ let h=`<div class=card>`;
+ if(due.length){const[i,s]=due[0];h+=`<small>${due.length} para revisar hoje · ${s.c.s?'estabilidade '+s.c.s.toFixed(1)+' d':'primeira revisão'}</small><h2 style="font-size:20px;margin:6px 0">${esc(T[i][1])}</h2><small>${D[T[i][0]][0]}</small><p>Antes de avaliar, tente lembrar o conteúdo sem consultar (recuperação ativa) ou resolva questões do tópico.</p>`;
+  h+=rv?`<b>Como foi?</b><div class=gr>${[['Errei',1],['Difícil',2],['Bom',3],['Fácil',4]].map(([l,g])=>`<button onclick="gr(${i},${g})"><b>${l}</b><small>${dbt(t0,rate(s.c,g,t0).due)} d</small></button>`).join('')}</div>`:`<button class=pri onclick="rv=1;draw()">Tentei lembrar — avaliar</button>`}
+ else h+=`<h2>Nenhuma revisão pendente 🎉</h2><small>Marque tópicos como “Estudado” para criar cartões.</small>`;
+ h+=`</div><div class=card><h2>Próximas revisões</h2>${up.length?`<table>${up.slice(0,10).map(([i,s])=>`<tr><td>${br(s.c.due)}</td><td>${esc(T[i][1].slice(0,80))}</td></tr>`).join('')}</table>`:'<small>Vazio.</small>'}</div>
+ <div class=card><h2>Como funciona</h2><small>Usa o <b>FSRS</b>, o algoritmo de repetição espaçada que substituiu o SM-2 no Anki (2023). Ele estima a estabilidade e a dificuldade de cada tópico e agenda a próxima revisão para quando a chance de lembrar cair para a retenção desejada (hoje ${Math.round(S.c.r*100)}%, ajustável em Ajustes). Parâmetros padrão do FSRS-5, sem otimização com o seu histórico.</small></div>`;return h};
+function gr(i,g){S.t[i].c=rate(S.t[i].c,g,today());S.t[i].r=true;rv=0;save();draw()}
+V.hor=()=>`<div class=card><h2>Registrar sessão</h2><div class=f><label>Data<input type=date id=ld value="${today()}"></label><label>Tópico ou disciplina${sel('d0','ls')}</label><label>Minutos<input type=number id=lm min=1 value=50 style="width:80px"></label><button class=pri onclick="addL()">Registrar</button></div></div>
+ <div class=card><h2>Últimas sessões</h2>${S.l.length?`<table>${S.l.map((x,j)=>[x,j]).sort((a,b)=>b[0].d.localeCompare(a[0].d)).slice(0,25).map(([x,j])=>`<tr><td>${br(x.d)}</td><td>${D[x.c][0]}${x.t>=0?'<br><small>'+esc(T[x.t][1].slice(0,60))+'</small>':''}</td><td>${fm(x.m)}</td><td><button class=sec aria-label="Excluir" onclick="S.l.splice(${j},1);save();draw()">×</button></td></tr>`).join('')}</table>`:'<small>Nenhuma sessão ainda. O Pomodoro registra sozinho ao fim de cada foco.</small>'}</div>`;
+function addL(){const m=+$('#lm').value;if(!(m>0))return;S.l.push(Object.assign({d:$('#ld').value||today(),m},pick($('#ls').value)));save();draw()}
+const dur=()=>S.c[P.m],MN={f:'Foco',s:'Pausa curta',g:'Pausa longa'};
+V.pom=()=>`<div class="card pm"><div class=chips style="justify-content:center">${['f','s','g'].map(m=>`<button class="chip ${P.m==m?'on':''}" onclick="P.m='${m}';P.run=0;P.left=dur()*60;draw()">${MN[m]}</button>`).join('')}</div>
+ <svg viewBox="0 0 220 220" width=240 role=timer aria-label="Cronômetro"><circle cx=110 cy=110 r=96 fill=none stroke="var(--ln)" stroke-width=10 /><circle id=pr cx=110 cy=110 r=96 fill=none stroke="${P.m=='f'?'var(--a)':'var(--w)'}" stroke-width=10 stroke-linecap=round transform="rotate(-90 110 110)" stroke-dasharray=603.2 /><text id=pt class=t x=110 y=125 text-anchor=middle></text></svg>
+ <p><small>${MN[P.m]} · ciclo ${P.cy%S.c.n+1} de ${S.c.n} · hoje: ${fm(sum(x=>x.d==today()))}</small></p>
+ <p>${P.m=='f'?`Estudando: ${sel(P.sel)}`:''}</p>
+ <p><button class=pri onclick="pt_()">${P.run?'Pausar':'Iniciar'}</button> <button class=sec onclick="P.run=0;P.left=dur()*60;draw()">Reiniciar</button> <button class=sec onclick="skip()">Pular</button></p>
+ <small>Ao concluir um foco, os minutos são registrados no tópico escolhido. “Pular” não registra.</small></div>`;
+function pt_(){if(P.run){P.left=Math.max(0,Math.round((P.end-Date.now())/1000));P.run=0}else{P.end=Date.now()+P.left*1000;P.run=1}draw()}
+function nxt(){P.m=P.m=='f'?(P.cy%S.c.n?'s':'g'):'f';P.left=dur()*60;P.run=0}
+function skip(){if(P.m=='f')P.cy++;nxt();draw()}
+function fin(){if(P.m=='f'){S.l.push(Object.assign({d:today(),m:S.c.f},pick(P.sel)));save();P.cy++}nxt();beep();draw()}
+function beep(){try{const c=new AudioContext(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;g.gain.setValueAtTime(.2,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+1.2);o.start();o.stop(c.currentTime+1.2)}catch(e){}}
+function dp(){const e=$('#pt');if(!e)return;const m=String(Math.floor(P.left/60)).padStart(2,'0')+':'+String(P.left%60).padStart(2,'0');e.textContent=m;$('#pr').style.strokeDashoffset=603.2*(1-P.left/(dur()*60));document.title=P.run?m+' · '+MN[P.m]:BASE}
+setInterval(()=>{if(!P.run)return;P.left=Math.max(0,Math.round((P.end-Date.now())/1000));if(P.left<=0)fin();else dp()},250);
+const cfg=(k,v)=>{S.c[k]=v;save();if(!P.run&&'fsg'.includes(k))P.left=dur()*60};
+V.cfg=()=>`<div class=card><h2>Ajustes</h2><div class=f>
+ ${[['f','Foco (min)'],['s','Pausa curta'],['g','Pausa longa'],['n','Focos até a pausa longa'],['w','Meta semanal (h)']].map(([k,l])=>`<label>${l}<input type=number min=1 value=${S.c[k]} style="width:100px" onchange="cfg('${k}',+this.value)"></label>`).join('')}
+ <label>Retenção desejada<select onchange="cfg('r',+this.value)">${[.8,.85,.9,.95].map(r=>`<option value=${r} ${S.c.r==r?'selected':''}>${r*100}%</option>`).join('')}</select></label>
+ <label>Data da prova<input type=date value="${S.c.x}" onchange="cfg('x',this.value)"></label></div></div>
+ <div class=card><h2>Conta e sincronização (Firebase)</h2>${fa?(fu?`<p>Conectado como ${esc(fu.email||fu.uid)}. Sincronizando automaticamente.</p><button class=sec onclick="fa.signOut()">Sair</button>`:`<p>Entre para sincronizar entre aparelhos.</p><button class=pri onclick="fa.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e=>alert(e.message))">Entrar com Google</button>`):'<small>Firebase não configurado: preencha FB_CONFIG no início do script.</small>'}</div>
+ <div class=card><h2>Backup</h2><small>Os dados ficam só neste navegador. Gere o backup, copie o texto e guarde; para restaurar, cole-o e clique em Restaurar.</small>
+ <p><textarea id=bk rows=5 style="width:100%"></textarea></p><button class=sec onclick="$('#bk').value=JSON.stringify(S)">Gerar backup</button> <button class=sec onclick="rst()">Restaurar</button> <button class=sec style="border-color:var(--r);color:var(--r)" onclick="if(confirm('Apagar todos os dados?')){S={c:S.c};nz();save();draw()}">Apagar tudo</button></div>`;
+function rst(){try{const o=JSON.parse($('#bk').value);if(!o.t||!o.l)throw 0;S=o;nz();save();draw()}catch(e){alert('Backup inválido.')}}
+const W0='2026-09-21',WK=[["Diagnóstico com 1 prova anterior. Desenho técnico, metrologia, SI e conversão de unidades.","Mat: conjuntos, razão e proporção, regra de três, porcentagem. Port: interpretação de texto e classes de palavras.","Diagnóstico",18],["Medição de temperatura e escalas, instrumentos de medição e aferição, mecânica geral.","Mat: equações de 1º e 2º grau e sistemas. Port: concordância.","",18],["Mecânica dos fluidos, resistência dos materiais (inclui dilatação térmica). Química: funções químicas e estequiometria.","Mat: funções. Port: crase e pontuação.","",18],["Calorimetria, transferência de calor e mudanças de estado.","Mat: trigonometria e geometria plana. Port: coesão e significação das palavras.","",18],["Materiais I: seleção de materiais, aços e ferros fundidos, diagrama ferro-carbono, não ferrosos.","Mat: combinatória e probabilidade. Port: ortografia e textos.","",18],["Materiais II: tratamentos térmicos, alto-forno/aciaria/conversores, fundição e conformação. Usinagem.","Mat: estatística. Port: textos.","40 questões de materiais",18],["Soldagem (eletrodo revestido e TIG) e ensaios destrutivos e não destrutivos, com muita prática de questões.","Mat: juros simples e compostos. Port: textos.","",18],["Eletroquímica, oxirredução, hidrocarbonetos e polímeros. Eletricidade básica. Ondas mecânicas e eletromagnéticas.","Mat: geometria espacial. Port: revisão.","Simulado 1 (sábado)",18],["2ª passada em materiais, metalurgia, soldagem e ensaios (os blocos mais pesados).","Prova isolada de gerais (20 questões).","Simulado 2 (sábado)",18],["2ª passada em desenho, metrologia, mecânica, resistência dos materiais, térmica e química.","Revisão dos pontos fracos de Mat e Port.","Simulado 3 (sábado)",18],["Revisão do caderno de erros e das fórmulas; 30 a 40 questões leves por dia; sábado de descanso.","Só revisão leve.","Semana da prova",15]],SM=[['Diagnóstico','2026-09-21'],['Simulado 1','2026-11-14'],['Simulado 2','2026-11-21'],['Simulado 3','2026-11-28'],['Extra',''],['Extra','']];
+const cw=()=>Math.min(11,Math.max(0,Math.floor(dbt(W0,today())/7)+1)),RD=[1,1,1,0,0];
+const sv=s=>{const{e,p,m}=s;if([e,p,m].some(v=>v===undefined||v===''||v===null))return null;const pe=e/40,pg=(p+m)/20;return{pe,pg,t:e+p+m,ok:pe>=.5&&pg>=.5&&p>0&&m>0}};
+const rc=s=>{const r=sv(s);return r?`${Math.round(r.pe*100)}% esp. · ${Math.round(r.pg*100)}% ger. · ${r.t}/60<br><small style="color:var(--${r.ok?'a':'r'})">${r.ok?'Dentro dos mínimos':'Abaixo do mínimo'}${r.pe>=.8&&r.pg>=.6?' · meta atingida':''}</small>`:'<small>—</small>'};
+const simCard=()=>{let j=-1;SM.forEach((m,i)=>{if(sv(S.s[i]||{}))j=i});return`<div class=card><h2>Último simulado</h2>${j<0?'<small>Nenhum registrado. Faça o diagnóstico na aba Simulados.</small>':`<b>${SM[j][0]}</b>: ${rc(S.s[j])}<br><small>Metas: 80% nas específicas e 60% nas gerais.</small>`}</div>`};
+V.sim=()=>`<div class=card><h2>Simulados</h2><small>Prova real: 40 específicas + 10 Português + 10 Matemática, em 4 horas. Mínimos do edital: 50% nas específicas, 50% nas gerais e nota acima de zero em Português e Matemática.</small></div><div class=card><table><tr><th>Simulado</th><th>Espec. /40</th><th>Port. /10</th><th>Mat. /10</th><th>Resultado</th></tr>${SM.map((m,j)=>{const s=S.s[j]||{};return`<tr><td>${m[0]}<br><small>${m[1]?br(m[1]):'—'}</small></td>${['e','p','m'].map(k=>`<td><input type=number min=0 class=n value="${s[k]??''}" onchange="sm(${j},'${k}',this.value)"></td>`).join('')}<td id=r${j}>${rc(s)}</td></tr>`}).join('')}</table></div>`;
+function sm(j,k,v){S.s[j]=S.s[j]||{};S.s[j][k]=v===''?'':+v;save();$('#r'+j).innerHTML=rc(S.s[j])}
+function wk(n,k,v){S.w[n]=S.w[n]||{};S.w[n][k]=v;save()}
+V.pl=()=>{const c=cw();return`<div class=card><h2>Cronograma: 11 semanas até 06/12/2026</h2><small>Semana atual: ${c||'ainda não começou'}. As horas realizadas vêm do Pomodoro e da aba Horas.</small></div>`+WK.map((w,j)=>{const a=add(W0,j*7),b=add(a,6),h=sum(x=>x.d>=a&&x.d<=b),s=S.w[j+1]||{};return`<div class=card ${c==j+1?'style="border:2px solid var(--a)"':''}><h2>Semana ${j+1} · ${br(a)} a ${br(b)}${w[2]?' · '+w[2]:''}</h2><p><b>Específicas:</b> ${w[0]}</p><p><b>Gerais:</b> ${w[1]}</p><div class=f><small>Horas: ${fm(h)} de ${w[3]}h</small><label>Questões<input type=number min=0 class=n value="${s.q||''}" onchange="wk(${j+1},'q',+this.value)"></label><label>Acertos<input type=number min=0 class=n value="${s.a||''}" onchange="wk(${j+1},'a',+this.value)"></label><small>Meta: ${S.c.m} questões</small></div></div>`}).join('')+`<div class=card><h2>Concorrência (ampla concorrência)</h2><table><tr><th>Polo</th><th>Imediatas</th><th>Vagas + reserva</th><th>Avançam (2×)</th></tr><tr><td>Norte e Nordeste</td><td>0</td><td>5</td><td>10</td></tr><tr><td>Rio de Janeiro</td><td>1</td><td>9</td><td>18</td></tr><tr><td>São Paulo</td><td>1</td><td>6</td><td>12</td></tr></table><small>Só avançam para a Fase 2 os mais bem classificados na nota de Específicas.</small></div><div class=card><h2>Requisitos para a admissão</h2>${['Curso técnico concluído (Eletrotécnica ou Eletromecânica)','Registro de Técnico no conselho, anuidade em dia','CNH categoria B, C, D ou E','Quitação eleitoral','Quitação militar (se homem)'].map((t,i)=>`<p><label><input type=checkbox ${(S.rq[i]??RD[i])?'checked':''} onchange="S.rq[${i}]=this.checked;save()"> ${t}</label></p>`).join('')}</div>`};
+function draw(){$('#nv').innerHTML=TABS.map(([k,l])=>`<button class="${tab==k?'on':''}" onclick="tab='${k}';rv=0;draw()">${l}</button>`).join('');$('#app').innerHTML=V[tab]();dp()}
+draw();
+</script></body></html>
